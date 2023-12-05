@@ -22,44 +22,58 @@ const images = [
     }
 ];
 
-
-
 // Milestone 1: Aggiungiamo un contatore per tenere traccia dell'immagine attuale
+
 let currentIndex = 0;
 
 // Aggiungiamo l'ascoltatore degli eventi ai pulsanti next e prev
+
 document.querySelector('.next').addEventListener('click', showNext);
 document.querySelector('.prev').addEventListener('click', showPrev);
 
 // Funzione per mostrare l'immagine successiva
-function showNext() {
-    currentIndex = currentIndex + 1;
-    updateCarousel();
-}
 
-// Funzione per mostrare l'immagine precedente
-function showPrev() {
-    currentIndex = currentIndex - 1
+function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
     updateCarousel();
     
 }
 
+// Funzione per mostrare l'immagine precedente
+
+function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel();
+        
+}
 // Funzione per aggiornare il carosello
 function updateCarousel() {
     let item = document.querySelector('.item');
     let image = `<img src=./${images[currentIndex].image} alt="${images[currentIndex].title}">`;
     
-    let descrition = document.createElement("div");
-    descrition.classList.add("position-absolute", "bottom-50", "text-right", "color-white", "padding-text");
-    
-    item.innerHTML = image + descrition;
-
-   
-    
     let title = `<h2>${images[currentIndex].title}</h2>`;
     let text = `<h5>${images[currentIndex].text}</h5>`;
-    descrition.innerHTML = title + text;
+    
+    
+    item.innerHTML = image + title + text ;
 
 }
 
+// Funzione per aggiornare il carosello
+// function updateCarousel() {
+//     let item = document.querySelector('.item');
+//     let image = `<img src=./${images[currentIndex].image} alt="${images[currentIndex].title}">`;
+    
+//     let descrition = document.createElement("div");
+//     descrition.classList.add("position-absolute", "bottom-50", "text-right", "color-white", "padding-text");
+    
+//     item.innerHTML = image + descrition;
+
+   
+    
+//     let title = `<h2>${images[currentIndex].title}</h2>`;
+//     let text = `<h5>${images[currentIndex].text}</h5>`;
+//     descrition.innerHTML = title + text;
+
+// }
 
