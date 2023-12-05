@@ -51,29 +51,12 @@ function updateCarousel() {
     let item = document.querySelector('.item');
     let image = `<img src=./${images[currentIndex].image} alt="${images[currentIndex].title}">`;
     
-    let title = `<h2>${images[currentIndex].title}</h2>`;
-    let text = `<h5>${images[currentIndex].text}</h5>`;
+    let div = document.createElement('div');
+    div.classList.add('position-absolute', 'bottom-50', 'text-right', 'color-white', 'padding-text');
     
-    
-    item.innerHTML = image + title + text ;
+    div.innerHTML = `<h2>${images[currentIndex].title}</h2><h5>${images[currentIndex].text}</h5>`;
+
+    item.innerHTML = image;
+    item.appendChild(div);
 
 }
-
-// Funzione per aggiornare il carosello
-// function updateCarousel() {
-//     let item = document.querySelector('.item');
-//     let image = `<img src=./${images[currentIndex].image} alt="${images[currentIndex].title}">`;
-    
-//     let descrition = document.createElement("div");
-//     descrition.classList.add("position-absolute", "bottom-50", "text-right", "color-white", "padding-text");
-    
-//     item.innerHTML = image + descrition;
-
-   
-    
-//     let title = `<h2>${images[currentIndex].title}</h2>`;
-//     let text = `<h5>${images[currentIndex].text}</h5>`;
-//     descrition.innerHTML = title + text;
-
-// }
-
